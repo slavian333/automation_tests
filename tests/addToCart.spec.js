@@ -6,17 +6,19 @@ describe('Login', () => {
     await $('#password').setValue('secret_sauce');
     await $('#login-button').click();
 
-    await $('#add-to-cart-sauce-labs-backpack').click();
-    await $(
-      '//div[@id="shopping_cart_container"]//span[text()="1"]',
-    ).toBeExisting();
-    // await $('div .title').toBeExisting();
-    await $('#shopping_cart_container').click();
+    const addProductToCart = $('#add-to-cart-sauce-labs-backpack');
+    const verifyCartBage = $('//div[@id="shopping_cart_container"]//span[text()="1"]');
+    const shoppingCart = $('#shopping_cart_container');
+    await addProductToCart.click();
+    await expect(verifyCartBage).toBeExisting();
+    await shoppingCart.click();
 
-    const cartItem = await $('#item_4_title_link');
-    await cartItem.toBeExisting();
-    await cartItem.click();
+    const itemNameInCart = await $('#item_4_title_link');
+    await expect(itemNameInCart).toBeExisting();
+    await expect(itemNameInCart).toHaveText('Sauce Labs Backpack');
+    await itemNameInCart.click();
 
-    // await $('.inventory_item:nth-child(2)').toBeExisting();
+    const itemNameOnPageDetails = await $('#inventory_item_container').$('.inventory_details_name');
+    await expect(itemNameOnPageDetails).toHaveText('Sauce Labs Backpack');
   });
 });

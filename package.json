@@ -3,7 +3,8 @@
   "type": "module",
   "scripts": {
     "wdio": "wdio run ./wdio.conf.js",
-    "login": "wdio run ./wdio.conf.js --spec ./tests/login.spec.js"
+    "login": "wdio run ./wdio.conf.js --spec ./tests/login.spec.js",
+    "addToCart": "wdio run ./wdio.conf.js --spec ./tests/addToCart.spec.js"
   },
   "devDependencies": {
     "@wdio/cli": "^9.4.1",

@@ -6,8 +6,11 @@ describe('Login', () => {
     await $('#password').setValue('secret_sauce');
     await $('#login-button').click();
 
-    await $('div .title').toBeExisting();
-    await $('#shopping_cart_container').toBeExisting();
-    await $('.inventory_item:nth-child(2)').toBeExisting();
+    const title = await $('div').$('.title');
+    const shoppingCart = await $('#shopping_cart_container');
+    const itemsQuantity = await $('.inventory_item:nth-child(2)');
+    await expect(title).toBeDisplayed();
+    await expect(shoppingCart).toBeDisplayed();
+    await expect(itemsQuantity).toBeDisplayed();
   });
 });
