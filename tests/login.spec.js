@@ -1,9 +1,11 @@
+import userData from './test_data/users';
+
 describe('Login', () => {
   it('fill in valid data and login', async () => {
-    await browser.url(`https://www.saucedemo.com/`);
+    await browser.url(`/`);
 
-    await $('#user-name').setValue('standard_user');
-    await $('#password').setValue('secret_sauce');
+    await $('#user-name').setValue(userData.user1.username);
+    await $('#password').setValue(userData.user1.password);
     await $('#login-button').click();
 
     const title = await $('div').$('.title');
